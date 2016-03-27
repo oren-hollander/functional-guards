@@ -44,9 +44,9 @@ const DocumentServices = () => {
     get: key => {
       const getValue = key => map => map[key]
 
-      const resetDrainPromise = map => {
+      const resetDrainPromise = x => {
         drainPromise = null
-        return map
+        return x
       }
 
       if(drainPromise){
