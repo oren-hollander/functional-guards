@@ -73,6 +73,6 @@ ds.get(p1).then(print)
 ds.get(p2).then(print)
 
 setTimeout(() => {
-  // ds.set(p1, 'value 3')
+  ds.set(p1, 'value 3')
   ds.get(p1).then(print)
 }, 2000)
