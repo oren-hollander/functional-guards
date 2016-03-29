@@ -1,6 +1,5 @@
 'use strict'
 
-
 const DEBUG_TYPES = true
 
 const check = (value, condition, error) => {
@@ -147,6 +146,7 @@ fail(_ => evenAnDividedBy3(3))
 fail(_ => evenAnDividedBy3(2))
 expect(evenAnDividedBy3(6)).toBe(6)
 
+const person = intf({name: str, age: nat})
 
 const printPerson = fun(person, str)(p => `My name is ${p.name} and I'm ${p.age} years old.`)
 expect(printPerson({name: 'John', age: 42})).toBe('My name is John and I\'m 42 years old.')
@@ -193,3 +193,123 @@ expect(arrayOfIntOrArrayOfString([1, 2, 3, 4])).toBe([1, 2, 3, 4])
 expect(arrayOfIntOrArrayOfString(['1', '2', '3', '4'])).toBe(['1', '2', '3', '4'])
 fail(_ => arrayOfIntOrArrayOfString([1, 2, '3', '4']))
 
+// const Person = fun(str, nat, person)((name, age) => Object.assign(Object.create({type: 'Person'}), {name, age}))
+const Person = (name, age) => Object.assign(Object.create({type: 'Person'}), {name, age})
+
+
+const p1 = Person('John', 42)
+const p2 = Person('Paul', 43)
+console.log(p1)
+console.log(p1.type)
+console.log(p2)
+console.log(p2.type)
+console.log(person(p1))
+console.log(person(p1).type)
+console.log(person(p2))
+console.log(person(p2).type)
+
+
+
+// const Ord = gen(any)(T => intf({gt: fun(T, T, bool)}))
+// console.log(p1.prototype.type)
+
+// const Nil = void 0
+//
+// const list = function list(v){
+//   if(v === Nil)
+//     return v
+//   else
+//     return intf({head: any, tail: list})(v)
+// }
+//
+// const l1 = list(Nil)
+//
+// const nil = fun(list, bool)(l => l === Nil)
+// const cons = fun(any, list, list)((v, l) => ({head: v, tail: l}))
+//
+// console.log(nil(l1))
+//
+// const nilError = () => {throw new Error('Nil')}
+//
+// const head = fun(list, any)(l => nil(l) ? nilError() : l.head)
+// const tail = fun(list, list)(l => nil(l) ? nilError() : l.tail)
+//
+// const l2 = cons(5, Nil)
+// console.log(nil(l2))
+// console.log(head(l2))
+//
+// const l3 = cons('6', l2)
+// console.log(tail(l3))
+// console.log(l3)
+//
+// const genList = function genList(T) {
+//   return v => {
+//     if (v === Nil)
+//       return v
+//     else
+//       return intf({head: T, tail: genList(T)})(v)
+//   }
+// }
+//
+// const gl1 = genList(int)(Nil)
+// console.log(gl1)
+//
+// const gl2 = genList(int)({head: 1, tail: Nil})
+// console.log(gl2)
+//
+// const gl3 = genList(int)({head: 1, tail: {head: 2, tail: Nil}})
+// console.log(gl3)
+//
+// const genCons = T => fun(T, genList(T), genList(T))((h, t) => ({head: h, tail: t}))
+//
+// const gl4 = genCons(int)(1, Nil)
+// console.log(gl4)
+//
+// const gl5 = genCons(int)(2, gl4)
+// console.log(gl5)
+// console.log(genList(int)(gl4))
+//
+//
+// const List = T => ({
+//   cons: fun(T, genList(T), genList(T))(cons)
+// })
+//
+// const IntList = List(int)
+// const xx1 = IntList.cons(1, Nil)
+// const xx2 = IntList.cons(2, xx1)
+//
+// console.log(xx1)
+// console.log(xx2)
+
+
+
+
+
+
+
+
+
+// const intList = genList(int)
+// const x = genCons(1, Nil)(1, Nil)
+
+// console.log('x', x)
+
+// const append = gen(any)(T => fun(list(T), T, list(T))((l, v) => nil(l) ? cons(v, Nil) : cons(head(l), append(tail(l), v))))
+// const reverse = gen(any)(T => fun(list(T), list(T))(l => nil(l) ? l : append(reverse(tail(l)), head(l))))
+// const show = gen(any)(T => fun(list(T), str)(l => nil(l) ? 'Nil' : head(l) + ' : ' + show(tail(l))))
+
+// const l1 = cons(1, Nil)
+// console.log(show(l1))
+//
+// const l2 = cons(2, l1)
+// console.log(show(l2))
+//
+// const l3 = append(l2, 3)
+// console.log(show(l3))
+// const l4 = reverse(l3)
+// console.log(show(l4))
+//
+// console.log(list(l1))
+// console.log(list(undefined))
+// console.log(list(l1))
+//
