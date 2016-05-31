@@ -1,0 +1,61 @@
+Timestamps:
+
+A timestamp has this format: "hh:mm:ss:MMM"
+
+hh
+    the hours value between 0 an 99
+
+mm
+    the minutes value between 0 and 59
+
+ss
+    the seconds value between 0 and 59
+
+MMM
+    the milliseconds value between 0 and 999
+
+
+
+Event type values:
+
+volume
+    A double value between 0 and 1
+
+pan
+    A double value between -1 (left) and 1 (right). 0 is center
+
+view
+    A rectangle expressed using four values: left, top, right, bottom. The values are doubles in the range 0..1
+    which are proportional to the view port size
+
+z-index
+    A natural number representing the rendering order - higher values renders later
+
+alpha
+    A double value between 0 and 1 representing opacity. 0 is transparent, 1 is opaque
+
+scale
+    A double value greater or equal than 0 representing the scale factor. 1 is neutral, values greater than 1 magnifies
+    and values less than 1 shrinks
+
+translate
+    A tuple (x, y) representing vertical and horizontal translation. The values are doubles between -1 and 1.
+
+rotate
+    A double value between 0 and 2 * Pi, measured in radians, representing the clockwise rotation
+
+fit
+    A double value between 0 and 1 representing automatic scaling in case the aspect ratio of the viewport differs
+    from that of the video or image. 0 is 'fit min' and 1 is 'fit max'
+
+clip
+    a clipping area with the following values:
+
+    shape
+        'rectangle' | 'ellipse'
+
+    mode
+        'in' | 'out' - determines which part of the shape will be clipped
+
+    left, top, right, bottom
+        the clipping bounding rect

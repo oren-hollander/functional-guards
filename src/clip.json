@@ -1,0 +1,145 @@
+{
+  "type": "polyframic-clip",
+  "version": 1,
+  "id": "B1C21305-D8CA-42AC-92E0-601C8FCA06F7",
+  "assets": {
+    "video": {
+      "kbd": "keyboard.mp4",
+      "bss": "bass.mp4",
+      "gtr": "guitar.mp4"
+    },
+    "audio": {
+      "kbd": "keyboard.mp4",
+      "bss": "bass.mp4",
+      "gtr": "guitar.mp4"
+    },
+    "image": {
+      "bg": "background.png"
+    }
+  },
+  "events": [
+    {
+      "type": "volume",
+      "timestamp": "00:00:00:000",
+      "asset": "kbd",
+      "value": 0.8
+    },
+    {
+      "type": "pan",
+      "timestamp": "00:00:00:000",
+      "asset": "bss",
+      "value": -0.5
+    },
+    {
+      "type": "view",
+      "timestamp": "00:00:10:000",
+      "asset": "gtr",
+      "value": {
+        "left": 0,
+        "top": 0,
+        "right": 1,
+        "bottom": 0.5
+      }
+    },
+    {
+      "type": "view",
+      "timestamp": "00:00:10:000",
+      "asset": "bss",
+      "value": {
+        "left": 0,
+        "top": 0.5,
+        "right": 0.5,
+        "bottom": 1
+      }
+    },
+    {
+      "type": "view",
+      "timestamp": "00:00:10:000",
+      "asset": "kbd",
+      "value": {
+        "left": 0.5,
+        "top": 0.5,
+        "right": 1,
+        "bottom": 1
+      }
+    },
+    {
+      "type": "z-index",
+      "timestamp": "00:01:00:000",
+      "asset": "kbd",
+      "value": 1
+    },
+    {
+      "type": "alpha",
+      "timestamp": "00:02:00:000",
+      "asset": "kbd",
+      "value": 0.5
+    },
+    {
+      "type": "scale",
+      "timestamp": "00:03:00:000",
+      "asset": "kbd",
+      "value": 2
+    },
+    {
+      "type": "translate",
+      "timestamp": "00:04:00:000",
+      "asset": "kbd",
+      "value": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "type": "rotate",
+      "timestamp": "00:05:00:000",
+      "asset": "kbd",
+      "value": 1.57079632679
+    },
+    {
+      "type": "fit",
+      "timestamp": "00:06:00:000",
+      "asset": "kbd",
+      "value": 0.5
+    },
+    {
+      "type": "clip",
+      "timestamp": "00:07:00:000",
+      "asset": "kbd",
+      "value": {
+        "shape": "rectangle",
+        "mode": "out",
+        "left": 0.25,
+        "top": 0.25,
+        "right": 0.75,
+        "bottom": 0.75
+      }
+    },
+    {
+      "type": "clip",
+      "timestamp": "00:06:00:000",
+      "asset": "kbd",
+      "value": {
+        "shape": "ellipse",
+        "mode": "out",
+        "left": 0.25,
+        "top": 0.25,
+        "right": 0.75,
+        "bottom": 0.75
+      }
+    },
+    {
+      "type": "clip",
+      "timestamp": "00:06:00:000",
+      "asset": "bg",
+      "value": {
+        "shape": "ellipse",
+        "mode": "in",
+        "left": 0.25,
+        "top": 0.25,
+        "right": 0.75,
+        "bottom": 0.75
+      }
+    }
+  ]
+}

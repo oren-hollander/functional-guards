@@ -71,12 +71,15 @@ const print = x => {
 }
 
 const ds = DocumentServices()
-
+const flip = f => a => b => f(b)(a)
 const mul = x => y => x * y
 const getX = _ => ds.get('x')
 const setX = ds.set('x')
 
-setX(3)
+// flip(ds.set)(3)('fff').then(print)
+// flip(ds.set)(3)('x').then(getX).then(print)
+ds.create(42)
+  .then(_ => flip(ds.set)(3))
   .then(getX)
   .then(print)
   .then(mul(2))
