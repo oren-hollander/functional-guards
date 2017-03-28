@@ -131,7 +131,9 @@ const Graph = (nodes = [], edges = []) => {
     return removeNode(targetLabel).addNode(Node(targetNode.label, targetNode.x, targetNode.y, [...targetNode.payloads, payload]))
   }
 
-  return {nodes, edges, addNode, removeNode, findNode, updateNode, addEdge, removeEdge, addPayload, removePayload, transmit}
+  const getNodeByLocation = point => nodes.find(node => Point.distance(Point(node.x, node.y), point) <= 15)
+  
+  return {nodes, edges, addNode, removeNode, findNode, updateNode, addEdge, removeEdge, addPayload, removePayload, transmit, getNodeByLocation}
 }
 
 const Point = (x, y) => {
@@ -145,6 +147,7 @@ Point.interpolate = (p1, p2, progress) => {
   return Point(p1.x + lX * progress, p1.y + lY * progress)
 }
 
+Point.distance = (p1, p2) => Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2))
 
 const Canvas = (canvas, width, height) => {
   canvas.width = width
@@ -194,7 +197,6 @@ const Canvas = (canvas, width, height) => {
 }
 
 const Transmission = (source, target, payload) => ({source, target, payload})
-
 
 const renderGraph = (graph, payloads, canvas, transmissions = [], progress = 0) => {
   const edgeBusy = edge => transmissions.some(t => Edge.equals(edge, Edge(t.source, t.target)))
@@ -277,7 +279,9 @@ window.addEventListener('load', () => {
   const canvasElement = document.createElement('canvas')
   canvasElement.style = 'border: 1px solid red; position: absolute; left: 100px; top: 100px'
   document.body.appendChild(canvasElement)
+  canvasElement.addEventListener('click', () => {console.log('clicked')})
   const canvas = Canvas(canvasElement, 1440, 640)
+
 
   const graph = Graph()
     .addNode(Node('1', 100, 100, ['A']))
